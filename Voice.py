@@ -7,12 +7,12 @@ import pyttsx3 as TTS
 phrase=''
 r = sr.Recognizer()
 
-def text_from_audio(dur=2, lang='en-US', off=0): # This is a code for taking the auio from the user and converting it to txt
+def text_from_audio(dur=5, lang='en-US', off=0): # This is a code for taking the auio from the user and converting it to txt
     global phrase#, word
 
     with sr.Microphone(device_index=0, sample_rate=48000) as source:
         r.adjust_for_ambient_noise(source, duration=1)
-        print("\n \n \n \nGo on, Speak\n \n \n \n ")
+        print("Go on, Speak")
 
         try:
             audio = r.record(source, duration=dur, offset=off)
@@ -27,7 +27,7 @@ def text_from_audio(dur=2, lang='en-US', off=0): # This is a code for taking the
         finally:
             return phrase
 
-def text_to_audio(txt, gender='male', rate=200): # This is a code to convert text into a speech
+def text_to_audio(txt, gender='male', rate=150): # This is a code to convert text into a speech
     engine = TTS.init()
 
     voice = ''
@@ -44,7 +44,7 @@ def text_to_audio(txt, gender='male', rate=200): # This is a code to convert tex
 
 
 while True:
-    text_to_audio(text_from_audio())
+    print(text_from_audio())
 
 
 
